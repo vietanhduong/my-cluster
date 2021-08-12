@@ -34,7 +34,7 @@ module "cluster" {
       name                          = "worker_group"
       instance_type                 = var.worker_tier
       additional_security_group_ids = [aws_security_group.worker.id]
-      arg_min_size                  = var.min_worker
+      asg_min_size                  = var.min_worker
       asg_max_size                  = var.max_worker
 
       # enable worker autoscaling
