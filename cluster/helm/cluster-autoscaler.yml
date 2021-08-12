@@ -1,0 +1,16 @@
+awsRegion: ${region}
+cloudProvider: aws
+sslCertPath: /etc/ssl/certs/ca-bundle.crt
+
+rbac:
+  create: true
+
+image:
+  tag: v1.20.0
+
+autoDiscovery:
+  clusterName: ${cluster_name}
+  enabled: true
+
+podAnnotations:
+  iam.amazonaws.com/role: ${arn}
