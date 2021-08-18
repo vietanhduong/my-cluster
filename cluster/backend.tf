@@ -3,5 +3,5 @@ terraform {
     bucket = "my-cluster-backend"
     key    = "cluster"
     region = "ap-southeast-1"
-  }  
+  }
 }

@@ -37,7 +37,7 @@ variable "volume_type" {
 variable "volume_size" {
   type        = number
   description = "AWS EBS disk size. Default is 100"
-  default      = 100
+  default     = 100
 }
 
 variable "worker_tier" {
