@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "my-cluster-backend"
-    key    = "contour"
+    key    = "istio"
     region = "ap-southeast-1"
   }
 }
