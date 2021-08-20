@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-cert
+  namespace: istio-system
+spec:
+  secretName: "tls-${domain}"
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  commonName: "${domain}"
+  dnsNames:
+    - "${domain}"

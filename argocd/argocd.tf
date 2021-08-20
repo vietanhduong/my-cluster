@@ -30,12 +30,23 @@ data "kubernetes_service" "argo" {
   metadata {
     name      = "argo-argocd-server"
     namespace = "argocd"
-    annotations = {
-      "contour.heptio.com/upstream-protocol.h2" = "https,443"
-    }
   }
 
   depends_on = [helm_release.argo]
+}
+
+## ORDER CERTIFICATE
+data "kubectl_file_documents" "argocd_cert" {
+  content = templatefile("certificate.yaml", {
+    domain = var.domain
+  })
+}
+
+resource "kubectl_manifest" "argocd_cert" {
+  count           = length(data.kubectl_file_documents.argocd_cert.documents)
+  yaml_body       = element(data.kubectl_file_documents.argocd_cert.documents, count.index)
+  validate_schema = false
+  depends_on      = [helm_release.argo]
 }
 
 ## PATCH CONFIG MAP
@@ -52,6 +63,7 @@ resource "kubectl_manifest" "argocd_cm" {
   depends_on      = [helm_release.argo]
 }
 
+# PATCH RBAC
 data "kubectl_file_documents" "rbac" {
   content = file("rbac.yml")
 }
@@ -63,15 +75,3 @@ resource "kubectl_manifest" "rbac" {
   depends_on      = [helm_release.argo]
 }
 
-## ARGOCD IMAGE UPDATER
-data "kubectl_file_documents" "argo_image_updater" {
-  content = file("argocd-image-updater-v0.10.2.yaml")
-}
-
-resource "kubectl_manifest" "argo_image_updater" {
-  count              = length(data.kubectl_file_documents.argo_image_updater.documents)
-  yaml_body          = element(data.kubectl_file_documents.argo_image_updater.documents, count.index)
-  depends_on         = [helm_release.argo]
-  override_namespace = "argocd"
-  validate_schema    = false
-}
