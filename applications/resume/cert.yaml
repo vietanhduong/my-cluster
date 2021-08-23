@@ -11,3 +11,9 @@ spec:
   commonName: resume.anhdv.dev
   dnsNames:
     - resume.anhdv.dev
+  acme:
+    config:
+      - http01:
+        ingressClass: istio
+        domains:
+          - resume.anhdv.dev
