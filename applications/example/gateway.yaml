@@ -11,8 +11,8 @@ spec:
         number: 80
         name: http-example
         protocol: HTTP
-      tls:
-        httpsRedirect: true
+      # tls:
+      #   httpsRedirect: true
       hosts:
         - example.anhdv.dev
     - port:
