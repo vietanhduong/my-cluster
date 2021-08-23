@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resume
+  labels:
+    app: resume
+spec:
+  replicas: 2
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: resume
+  template:
+    metadata:
+      annotations:
+      labels:
+        app: resume
+    spec:
+      serviceAccountName: resume
+      containers:
+        - name: server
+          image: vietanhs0817/ota-server:master-c67b894
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: "resume-cm"
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"

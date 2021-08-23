@@ -1,0 +1,8 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: resume 
+  annotations:
+    name: resume 
+  labels:
+    name: resume 

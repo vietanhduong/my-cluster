@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: resume-cert
+  namespace: istio-system
+spec:
+  secretName: "tls-resume.anhdv.dev"
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  commonName: resume.anhdv.dev
+  dnsNames:
+    - resume.anhdv.dev

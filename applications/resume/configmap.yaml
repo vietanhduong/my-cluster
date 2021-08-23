@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: resume-cm
+data:
+  PORT: 8080
+  GH_USER: vietanhduong
+  GH_REPO: resume
+  GH_BRANCH: master
+  FETCH_RESUME_ON_START_UP: 1

@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: resume-vs
+spec:
+  hosts:
+  - resume.anhdv.dev
+  gateways:
+  - resume-gw
+  http:
+    - name: resume-route
+      route:
+      - destination:
+          host: "resume-server.resume.svc.cluster.local"
+          port:
+            number: 8080
