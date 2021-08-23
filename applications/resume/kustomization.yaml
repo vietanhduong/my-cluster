@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: resume
 resources:
   - namespace.yaml
-  - redis.yaml
   - configmap.yaml
   - deployment.yaml
   - serviceaccount.yaml
