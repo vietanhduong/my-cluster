@@ -11,8 +11,6 @@ spec:
         number: 80
         name: http-resume
         protocol: HTTP
-      tls:
-        httpsRedirect: true
       hosts:
         - resume.anhdv.dev
     - port:
