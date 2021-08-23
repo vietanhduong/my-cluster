@@ -16,14 +16,33 @@ data "aws_eks_cluster_auth" "cluster" {
   name = data.terraform_remote_state.eks.outputs.cluster_id
 }
 
+
+resource "kubernetes_namespace" "argocd" {
+  metadata {
+    name = "argocd"
+    annotations = {
+      name = "argocd"
+    }
+    labels = {
+      name            = "argocd"
+      # Uncomment if you want to inject istio sidecar
+      # istio-injection = "enabled"
+    }
+  }
+}
+
 resource "helm_release" "argo" {
-  name             = "argo"
-  namespace        = "argocd"
-  create_namespace = true
-  repository       = "https://argoproj.github.io/argo-helm"
-  chart            = "argo-cd"
+  name       = "argo"
+  namespace  = kubernetes_namespace.argocd.metadata.0.name
+  repository = "https://argoproj.github.io/argo-helm"
+  chart      = "argo-cd"
+
+  cleanup_on_fail = true
+  force_update    = true
 
   values = [file("values.yaml")]
+
+  depends_on = [kubernetes_namespace.argocd]
 }
 
 data "kubernetes_service" "argo" {

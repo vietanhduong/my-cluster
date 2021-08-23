@@ -18,3 +18,7 @@ spec:
       - http01:
           ingress:
             class: istio
+            podTemplate:
+              metadata:
+                annotations:
+                  sidecar.istio.io/inject: "true"

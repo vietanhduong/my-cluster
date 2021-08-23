@@ -20,8 +20,8 @@ spec:
       name: https
       protocol: HTTPS
     tls:
-      mode: SIMPLE
-      credentialName: "tls-${domain}"
+      mode: SIMPLE 
+      credentialName: "${domain}-tls"
     hosts:
     - "${domain}"
 ---

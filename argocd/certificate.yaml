@@ -4,7 +4,7 @@ metadata:
   name: argocd-cert
   namespace: istio-system
 spec:
-  secretName: "tls-${domain}"
+  secretName: "${domain}-tls"
   issuerRef:
     name: letsencrypt
     kind: ClusterIssuer
