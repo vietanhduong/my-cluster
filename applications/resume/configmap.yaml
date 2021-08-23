@@ -4,7 +4,7 @@ metadata:
   namespace: resume
   name: resume-cm
 data:
-  PORT: 8080
+  PORT: "8080"
   GH_USER: vietanhduong
   GH_REPO: resume
   GH_BRANCH: master
