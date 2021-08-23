@@ -8,4 +8,4 @@ data:
   GH_USER: vietanhduong
   GH_REPO: resume
   GH_BRANCH: master
-  FETCH_RESUME_ON_START_UP: 1
+  FETCH_RESUME_ON_START_UP: "1"
