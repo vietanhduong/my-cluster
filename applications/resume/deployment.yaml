@@ -19,7 +19,7 @@ spec:
       serviceAccountName: resume
       containers:
         - name: server
-          image: vietanhs0817/ota-server:master-c67b894
+          image: vietanhs0817/resume:master-c67b894
           ports:
             - containerPort: 8080
           envFrom:
