@@ -6,3 +6,4 @@ metadata:
     name: resume 
   labels:
     name: resume 
+    istio-injection: enabled

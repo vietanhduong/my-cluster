@@ -9,7 +9,7 @@ spec:
   servers:
     - port:
         number: 80
-        name: http
+        name: http-resume
         protocol: HTTP
       tls:
         httpsRedirect: true
@@ -17,10 +17,10 @@ spec:
         - resume.anhdv.dev
     - port:
         number: 443
-        name: https
+        name: https-resume
         protocol: HTTPS
       tls:
         mode: SIMPLE
-        credentialName: "tls-resume.anhdv.dev"
+        credentialName: "resume.anhdv.dev-tls"
       hosts:
         - resume.anhdv.dev

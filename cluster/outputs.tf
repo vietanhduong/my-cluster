@@ -12,6 +12,7 @@ output "cluster_security_group_id" {
   description = "Security group ids attached to the cluster control plane."
   value       = module.cluster.cluster_security_group_id
 }
+
 output "config_map_aws_auth" {
   description = "A kubernetes configuration to authenticate to this EKS cluster."
   value       = module.cluster.config_map_aws_auth
@@ -20,4 +21,9 @@ output "config_map_aws_auth" {
 output "region" {
   description = "Cluster region"
   value       = var.region
+}
+
+output "cluster_role_name" {
+  description = "Cluster IAM Role name"
+  value       = module.cluster.cluster_iam_role_name
 }

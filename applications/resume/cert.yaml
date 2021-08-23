@@ -4,10 +4,10 @@ metadata:
   name: resume-cert
   namespace: istio-system
 spec:
-  secretName: "tls-resume.anhdv.dev"
+  secretName: "resume.anhdv.dev-tls"
   issuerRef:
     name: letsencrypt
     kind: ClusterIssuer
-  commonName: resume.anhdv.dev
+  commonName: "resume.anhdv.dev"
   dnsNames:
-    - resume.anhdv.dev
+    - "resume.anhdv.dev"

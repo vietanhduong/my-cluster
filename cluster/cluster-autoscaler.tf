@@ -37,6 +37,7 @@ data "aws_iam_policy_document" "cluster_autoscaler" {
     effect    = "Allow"
   }
 }
+
 resource "aws_iam_policy" "cluster_autoscaler" {
   name   = "${local.cluster_name}_cluster_autoscaler"
   policy = data.aws_iam_policy_document.cluster_autoscaler.json

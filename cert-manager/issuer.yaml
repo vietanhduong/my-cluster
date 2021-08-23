@@ -15,10 +15,8 @@ spec:
     privateKeySecretRef:
       name: letsencrypt
     solvers:
-      - http01:
+      - selector: {}  
+        http01:
           ingress:
             class: istio
-            podTemplate:
-              metadata:
-                annotations:
-                  sidecar.istio.io/inject: "true"
+        
