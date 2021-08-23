@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  namespace: resume
   name: resume-cm
 data:
   PORT: 8080

@@ -1,6 +1,7 @@
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
+  namespace: resume
   name: resume
 spec:
   scaleTargetRef:
