@@ -3,9 +3,6 @@ kind: Certificate
 metadata:
   name: resume-cert
   namespace: istio-system
-  annotations:
-    cert-manager.io/issue-temporary-certificate: "true"
-    acme.cert-manager.io/http01-edit-in-place: "true"
 spec:
   secretName: "cert-resume.anhdv.dev"
   issuerRef:
