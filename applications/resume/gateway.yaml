@@ -21,6 +21,6 @@ spec:
         protocol: HTTPS
       tls:
         mode: SIMPLE
-        credentialName: "cert-resume.anhdv.dev"
+        credentialName: "tls-resume.anhdv.dev"
       hosts:
         - resume.anhdv.dev
