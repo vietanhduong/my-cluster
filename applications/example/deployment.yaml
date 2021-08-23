@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: example
+  name: example
+  labels:
+    app: example
+spec:
+  replicas: 1 
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: example
+  template:
+    metadata:
+      annotations:
+      labels:
+        app: example
+    spec:
+      containers:
+        - name: server
+          image: vietanhs0817/nginx-demo:v3.0
+          ports:
+            - containerPort: 80 
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"

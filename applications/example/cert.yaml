@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: example-cert
+  namespace: istio-system
+spec:
+  secretName: "example.anhdv.dev-tls"
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  commonName: "example.anhdv.dev"
+  dnsNames:
+    - "example.anhdv.dev"

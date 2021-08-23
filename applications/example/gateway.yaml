@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  namespace: example
+  name: example-gw
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http-example
+        protocol: HTTP
+      tls:
+        httpsRedirect: true
+      hosts:
+        - example.anhdv.dev
+    - port:
+        number: 443
+        name: https-example
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: "example.anhdv.dev-tls"
+      hosts:
+        - example.anhdv.dev

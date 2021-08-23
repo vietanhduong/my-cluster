@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  namespace: example
+  name: example-vs
+spec:
+  hosts:
+    - example.anhdv.dev
+  gateways:
+    - example-gw
+  http:
+    - route:
+        - destination:
+            host: "example-server.example.svc.cluster.local"
+            port:
+              number: 80
