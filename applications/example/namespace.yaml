@@ -6,4 +6,4 @@ metadata:
     name: example 
   labels:
     name: example 
-    istio-injection: enabled
+    # istio-injection: enabled
