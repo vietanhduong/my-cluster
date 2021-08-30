@@ -15,8 +15,9 @@ spec:
     privateKeySecretRef:
       name: letsencrypt
     solvers:
-      - selector: {}  
-        http01:
-          ingress:
-            class: istio
-        
+    - dns01:
+        cloudflare:
+          email: vietanhs0817@gmail.com
+          apiKeySecretRef:
+            name: cloudflare-api-key
+            key: api-key

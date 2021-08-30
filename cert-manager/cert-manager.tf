@@ -44,3 +44,16 @@ resource "kubectl_manifest" "issuer" {
   depends_on      = [time_sleep.wait_for_ssl_certs]
   validate_schema = false
 }
+
+resource "kubernetes_secret" "cloudflare_api_key" {
+  metadata {
+    name      = "cloudflare-api-key"
+    namespace = "cert-manager"
+  }
+
+  data = {
+    api-key = var.cloudflare_api_key
+  }
+
+  depends_on = [helm_release.cert_manager]
+}

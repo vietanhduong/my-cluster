@@ -14,9 +14,25 @@ spec:
   template:
     metadata:
       annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/role: "example"
+        vault.hashicorp.com/agent-inject-status: "update"
+        vault.hashicorp.com/agent-inject-secret-credentials.json: "data/example/files"
+        vault.hashicorp.com/agent-inject-template-credentials.json: |
+          {{- with secret "data/example/files" -}}
+          {{ .Data.data.credentials }}
+          {{- end }}
+        vault.hashicorp.com/agent-inject-secret-secrets: "data/example/secrets"
+        vault.hashicorp.com/agent-inject-template-secrets: |
+          {{- with secret "data/example/secrets" -}}
+          {{- range $k, $v := .Data.data -}}
+          export {{ $k }}={{ $v }}
+          {{ end -}}
+          {{- end -}}
       labels:
         app: example
     spec:
+      serviceAccountName: example
       containers:
         - name: server
           image: vietanhs0817/nginx-demo:v3.0

@@ -1,0 +1,42 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: vault-gateway
+  namespace: vault 
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "${domain}"
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE 
+      credentialName: "${domain}-tls"
+    hosts:
+    - "${domain}"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: vault 
+  namespace: vault 
+spec:
+  hosts:
+  - "${domain}"
+  gateways:
+  - vault-gateway
+  http:
+    - name: "vault-route"
+      route:
+      - destination:
+          host: "${service_name}.vault.svc.cluster.local"
+          port:
+            number: ${port}

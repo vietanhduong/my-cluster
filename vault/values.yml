@@ -1,0 +1,37 @@
+global:
+  enabled: true
+
+server:
+  extraEnvironmentVars:
+    AWS_REGION: ${region}
+  extraSecretEnvironmentVars:
+    - envName: AWS_ACCESS_KEY_ID
+      secretName: vault-s3
+      secretKey: aws_access_key
+    - envName: AWS_SECRET_ACCESS_KEY
+      secretName: vault-s3
+      secretKey: aws_secret_key
+
+  ha:
+    # consider that S3 does not suppport HA
+    # ref: https://www.vaultproject.io/docs/configuration/storage/s3
+    enabled: false
+    # default relicas is 3, just change to 1
+    replicas: 1
+
+    config: |
+      ui = true
+
+      listener "tcp" {
+        tls_disable = true
+        address = "[::]:8200"
+        cluster_address = "[::]:8201"
+      }
+
+      storage "s3" {
+        bucket     = "${vault_storage}" 
+      }
+
+      seal "awskms" {
+        kms_key_id  = "${vault_key}"
+      }
