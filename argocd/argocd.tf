@@ -24,7 +24,7 @@ resource "kubernetes_namespace" "argocd" {
       name = "argocd"
     }
     labels = {
-      name            = "argocd"
+      name = "argocd"
       # Uncomment if you want to inject istio sidecar
       # istio-injection = "enabled"
     }
