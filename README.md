@@ -14,4 +14,3 @@ Some of the information you need to know:
 - If you use Cloudflare and Cert Manager to order a Certificate, the "Always use HTTPS" mode must be disabled. 
 - If you use Istio, Gateway cannot be force request to HTTPS (443) `httpsRedirect: true`. You can change it after the challenge is over.
 - When working with Istio I had a lot of problems ordering the Let's Encrypt Certificate using http01 so I switched to using dns01 method by providing Cloudflare API Key. You can find related documents [here](https://cert-manager.io/docs/configuration/acme/dns01/cloudflare/). 
-- 
