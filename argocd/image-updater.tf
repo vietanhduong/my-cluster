@@ -12,7 +12,7 @@ resource "helm_release" "image_updater" {
 }
 
 data "kubectl_file_documents" "image_updater_cm" {
-  content = file("image-updater-cm.yaml")
+  content = file("${path.module}/image-updater-cm.yaml")
 }
 
 resource "kubectl_manifest" "image_updater_cm" {

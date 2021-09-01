@@ -20,7 +20,7 @@ resource "helm_release" "istio-base" {
   name             = "istio-base"
   namespace        = "istio-system"
   create_namespace = true
-  chart            = ".charts/base"
+  chart            = "${path.module}/.charts/base"
 
   timeout         = 120
   cleanup_on_fail = true
@@ -31,7 +31,7 @@ resource "helm_release" "istiod" {
   name             = "istiod"
   namespace        = "istio-system"
   create_namespace = true
-  chart            = ".charts/istio-control/istio-discovery"
+  chart            = "${path.module}/.charts/istio-control/istio-discovery"
 
   timeout         = 120
   cleanup_on_fail = true
@@ -44,13 +44,13 @@ resource "helm_release" "istio-ingress" {
   name             = "istio-ingress"
   namespace        = "istio-system"
   create_namespace = true
-  chart            = ".charts/gateways/istio-ingress"
+  chart            = "${path.module}/.charts/gateways/istio-ingress"
 
   timeout         = 120
   cleanup_on_fail = true
   force_update    = true
 
-  values = [file("values/gateways/ingress.yaml")]
+  values = [file("${path.module}/values/gateways/ingress.yaml")]
 
   depends_on = [helm_release.istiod]
 }
@@ -59,7 +59,7 @@ resource "helm_release" "istio-egress" {
   name             = "istio-egress"
   namespace        = "istio-system"
   create_namespace = true
-  chart            = ".charts/gateways/istio-egress"
+  chart            = "${path.module}/.charts/gateways/istio-egress"
 
   timeout         = 120
   cleanup_on_fail = true

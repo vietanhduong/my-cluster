@@ -40,7 +40,7 @@ resource "helm_release" "argo" {
   cleanup_on_fail = true
   force_update    = true
 
-  values = [file("values.yaml")]
+  values = [file("${path.module}/values.yaml")]
 
   depends_on = [kubernetes_namespace.argocd]
 }
@@ -56,7 +56,7 @@ data "kubernetes_service" "argo" {
 
 ## ORDER CERTIFICATE
 data "kubectl_file_documents" "argocd_cert" {
-  content = templatefile("certificate.yaml", {
+  content = templatefile("${path.module}/certificate.yaml", {
     domain = var.domain
   })
 }
@@ -70,7 +70,7 @@ resource "kubectl_manifest" "argocd_cert" {
 
 ## PATCH CONFIG MAP
 data "kubectl_file_documents" "argocd_cm" {
-  content = templatefile("argocd-cm.yml", {
+  content = templatefile("${path.module}/argocd-cm.yml", {
     domain = var.domain
   })
 }
@@ -84,7 +84,7 @@ resource "kubectl_manifest" "argocd_cm" {
 
 # PATCH RBAC
 data "kubectl_file_documents" "rbac" {
-  content = file("rbac.yml")
+  content = file("${path.module}/rbac.yml")
 }
 
 resource "kubectl_manifest" "rbac" {

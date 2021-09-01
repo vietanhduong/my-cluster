@@ -1,5 +1,5 @@
 data "kubectl_file_documents" "ingress" {
-  content = templatefile("ingress.yaml", {
+  content = templatefile("${path.module}/ingress.yaml", {
     domain       = var.domain,
     service_name = "vault",
     port         = 8200 

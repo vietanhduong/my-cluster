@@ -1,5 +1,5 @@
 data "kubectl_file_documents" "cert" {
-  content = templatefile("cert.yaml", {
+  content = templatefile("${path.module}/cert.yaml", {
     domain = var.domain
   })
 }

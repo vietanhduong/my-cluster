@@ -23,7 +23,7 @@ resource "helm_release" "cert_manager" {
   repository       = "https://charts.jetstack.io"
   chart            = "cert-manager"
 
-  values = [file("values.yaml")]
+  values = [file("${path.module}/values.yaml")]
 }
 
 resource "time_sleep" "wait_for_ssl_certs" {
@@ -35,7 +35,7 @@ resource "time_sleep" "wait_for_ssl_certs" {
 }
 
 data "kubectl_file_documents" "issuer" {
-  content = file("issuer.yaml")
+  content = file("${path.module}/issuer.yaml")
 }
 
 resource "kubectl_manifest" "issuer" {
