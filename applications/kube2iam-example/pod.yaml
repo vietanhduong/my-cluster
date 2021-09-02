@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: aws-cli
+  namespace: kube2iam-example
+  labels:
+    name: aws-cli
+  annotations:
+    iam.amazonaws.com/role: YOUR_ROLE_ARN
+spec:
+  containers:
+  - image: fstab/aws-cli
+    command:
+      - "/home/aws/aws/env/bin/aws"
+      - "s3"
+      - "ls"
+      - "YOUR_BUCKET_NAME"
+    name: aws-cli
