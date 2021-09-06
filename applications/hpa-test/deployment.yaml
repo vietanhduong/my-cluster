@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hpa-test
+spec:
+  selector:
+    matchLabels:
+      run: hpa-test
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: hpa-test
+    spec:
+      containers:
+      - name: hpa-test
+        image: vietanhs0817/hpa-test:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 200m

@@ -1,0 +1,8 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: hpa-test 
+  annotations:
+    name: hpa-test 
+  labels:
+    name: hpa-test 
