@@ -20,8 +20,8 @@ Note that the first "hpa-test" is my **namespace** and the second "hpa-test" is 
 A few things I want you to keep in mind to avoid wasting time:
 - Make sure your K8S cluster is deployed "metric-server".
 - To check if the cluster is installed "metric-server" or not:
-```shell
-kubectl top nodes
-```
+  ```shell
+  kubectl top nodes
+  ```
 - HPA can only work when you configure "resource request" in "deployment".
 - HPA will collect metric of "pod" **30s** after "pod" starts running. 
