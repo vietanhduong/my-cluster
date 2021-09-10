@@ -8,6 +8,6 @@ metadata:
     app.kubernetes.io/part-of: argocd
 data:
   # Redirect logout
-  url: "${domain}"
+  url: "https://${domain}"
   # admin.enabled: "false"
   accounts.vietanhduong: apiKey, login
