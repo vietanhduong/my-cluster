@@ -1,0 +1,9 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: kes-example 
+  annotations:
+    name: kes-example 
+  labels:
+    name: kes-example 
+    istio-injection: enabled

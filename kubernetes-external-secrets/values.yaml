@@ -1,0 +1,4 @@
+env:
+  VAULT_ADDR: http://vault.vault.svc.cluster.local:8200
+  DEFAULT_VAULT_MOUNT_POINT: "kubernetes"
+  DEFAULT_VAULT_ROLE: "external-secrets" 
