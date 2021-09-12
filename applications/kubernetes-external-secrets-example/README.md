@@ -41,6 +41,7 @@ E.g:
 
 ### Docker credentials
 I created a **dockerconfig** with path **data/example/docker**. 
+
 `credentials` field should be:
 ```json
 {
