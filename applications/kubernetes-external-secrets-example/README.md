@@ -1,6 +1,7 @@
 # Kubernetes External Secrets Example
 
 When reading the KES documentation, I see that there is a point that can cause readers to be confused. 
+
 Document: https://github.com/external-secrets/kubernetes-external-secrets#hashicorp-vault
 
 ```yaml
@@ -30,11 +31,12 @@ spec:
 ```
 
 **key: secret/data/hello-service/credentials** the **secret** should be **ENGINE PATH**. 
+
 E.g:
 - You enabled **KV2 Engine** with path **data/secrets** so the key should be: **data/data/secrets**.
 - You enabled **AWS Engine** with paht **aws/secrets** so the key should be **aws/data/secrets**.
 
-Related issues:
+**Related issues:**
 - https://github.com/hashicorp/vault/issues/4808
 
 ### Docker credentials
@@ -50,7 +52,7 @@ I created a **dockerconfig** with path **data/example/docker**.
   }
 }
 ```
-If you are using Docker Hub. The `DOCKER_REGISTRY_URL` should be https://index.docker.io/v1/
+If you are using **Docker Hub**. The `DOCKER_REGISTRY_URL` should be https://index.docker.io/v1/
 
 ---
 ### Related documents: 
