@@ -37,7 +37,7 @@ resource "helm_release" "argo" {
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-cd"
 
-  version    = "3.6.0"
+  version = "3.6.0"
 
   cleanup_on_fail = true
   force_update    = true
