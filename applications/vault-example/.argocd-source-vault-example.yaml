@@ -1,3 +1,0 @@
-kustomize:
-  images:
-  - vietanhs0817/nginx-demo:v3.1
