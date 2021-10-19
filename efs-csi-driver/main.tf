@@ -10,16 +10,16 @@ resource "helm_release" "efs_csi_driver" {
   values = [file("${path.module}/values.yaml")]
 }
 
-resource "kubectl_manifest" "storage_class" {
-  yaml_body = <<YAML
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-  name: ${local.name}-sc
-provisioner: efs.csi.aws.com
-parameters:
-  directoryPerms: "700"
-  provisioningMode: efs-ap
-  fileSystemId: ${local.fs_id}
-YAML
+resource "kubernetes_storage_class" "this" {
+  metadata {
+    name = "${local.name}-sc"
+  }
+
+  storage_provisioner = "efs.csi.aws.com"
+
+  parameters = {
+    directoryPerms = "700"
+    provisioningMode = "efs-ap"
+    fileSystemId = local.fs_id
+  }
 }

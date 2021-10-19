@@ -1,11 +1,11 @@
 resource "aws_efs_file_system" "this" {
   tags = {
-    Name = var.name
+    Name = "${local.name}_efs"
   }
 }
 
 data "aws_subnet_ids" "selected" {
-  vpc_id = var.vpc_id
+  vpc_id = local.eks_output.vpc_id
 }
 
 data "aws_subnet" "selected" {

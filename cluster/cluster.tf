@@ -23,6 +23,9 @@ module "cluster" {
   # restrict public IPs address can access to clusster
   cluster_endpoint_public_access_cidrs = var.allowed_cidrs
 
+
+  enable_irsa = true
+
   workers_group_defaults = {
     root_volume_type = var.volume_type
     disk_size        = var.volume_size

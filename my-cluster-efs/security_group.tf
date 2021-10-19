@@ -1,10 +1,10 @@
 data "aws_vpc" "selected" {
-  id = var.vpc_id
+  id = local.eks_output.vpc_id
 }
 
 
 resource "aws_security_group" "this" {
-  name   = "${var.name}_efs"
+  name   = "${local.name}_efs"
   vpc_id = data.aws_vpc.selected.id
 
   ingress {
