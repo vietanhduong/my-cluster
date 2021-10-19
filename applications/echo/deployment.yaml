@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: echo 
+  name: echo 
+  labels:
+    app: echo 
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: echo
+  template:
+    metadata:
+      annotations:
+      labels:
+        app: echo
+    spec:
+      serviceAccountName: echo 
+      containers:
+        - name: server
+          image: mendhak/http-https-echo:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: HTTP_PORT
+              value: "8080"
+          resources:
+            requests:
+              cpu: "0.1"
+              memory: "128Mi"

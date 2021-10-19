@@ -1,0 +1,9 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: echo 
+  annotations:
+    name: echo 
+  labels:
+    name: echo 
+    istio-injection: enabled

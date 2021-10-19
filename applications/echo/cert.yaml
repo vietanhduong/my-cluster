@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: echo-cert
+  namespace: istio-system
+spec:
+  secretName: "echo.anhdv.dev-tls"
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  commonName: "echo.anhdv.dev"
+  dnsNames:
+    - "echo.anhdv.dev"

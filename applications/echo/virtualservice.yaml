@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  namespace: echo
+  name: echo-vs
+spec:
+  hosts:
+    - echo.anhdv.dev
+  gateways:
+    - echo-gw
+  http:
+    - route:
+        - destination:
+            host: "echo-server.echo.svc.cluster.local"
+            port:
+              number: 8080

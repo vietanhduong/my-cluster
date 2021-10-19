@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  namespace: echo 
+  name: echo-gw
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http-echo
+        protocol: HTTP
+      hosts:
+        - echo.anhdv.dev
+    - port:
+        number: 443
+        name: https-echo
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: "echo.anhdv.dev-tls"
+      hosts:
+        - echo.anhdv.dev
