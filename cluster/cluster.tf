@@ -38,7 +38,7 @@ module "cluster" {
       asg_desired_capacity = var.min_worker
       asg_min_size         = var.min_worker
       asg_max_size         = var.max_worker
-      kubelet_extra_args = "--node-labels=node.kubernetes.io/lifecycle=normal"
+      kubelet_extra_args   = "--node-labels=node.kubernetes.io/lifecycle=normal"
 
       # enable worker autoscaling
       tags = [

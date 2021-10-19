@@ -1,0 +1,9 @@
+image:
+  repository: 602401143452.dkr.ecr.ap-southeast-1.amazonaws.com/eks/aws-efs-csi-driver
+
+controller:
+  serviceAccount:
+    create: false
+    name: efs-csi-controller-sa
+  tags:
+    region: ap-southeast-1
